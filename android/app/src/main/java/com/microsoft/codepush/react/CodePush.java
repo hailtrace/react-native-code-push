@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.reflect.Method;
 
 public class CodePush implements ReactPackage {
 
@@ -154,7 +155,13 @@ public class CodePush implements ReactPackage {
             DevSupportManager devSupportManager = instanceManager.getDevSupportManager();
             if (devSupportManager != null) {
                 DevInternalSettings devInternalSettings = (DevInternalSettings)devSupportManager.getDevSettings();
-                isLiveReloadEnabled = devInternalSettings.isReloadOnJSChangeEnabled();
+                Method[] methods = devInternalSettings.getClass().getMethods();
+                for (Method m : methods) {
+                    if (m.getName().equals("isReloadOnJSChangeEnabled")) {
+                        isLiveReloadEnabled = devInternalSettings.isReloadOnJSChangeEnabled();
+                        break;
+                    }
+                }
             }
         }
 
