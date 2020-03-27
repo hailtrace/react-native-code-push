@@ -10,7 +10,7 @@ Requirements:
 Usage: node create-app.js <appName> <reactNativeVersion> <reactNativeCodePushVersion>
     1. node create-app.js 
     2. node create-app.js myapp
-    3. node create-app.js myapp react-native@0.61.5 react-native-code-push@6.0.0 
+    3. node create-app.js myapp react-native@0.62 react-native-code-push@6.1.0 
     4. node create-app.js myapp react-native@latest Microsoft/react-native-code-push
 
 Parameters:
